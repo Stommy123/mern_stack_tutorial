@@ -1,0 +1,18 @@
+import React from "react";
+
+const FormGroup = ({ type, label, placeholder, id, value, onChange, required }) => (
+  <div className="form-group">
+    <label>{label}</label>
+    <input
+      id={id}
+      className="form-control"
+      required={required}
+      type={type}
+      placeholder={placeholder}
+      value={value}
+      onChange={onChange(id)}
+    />
+  </div>
+);
+
+export default FormGroup;
