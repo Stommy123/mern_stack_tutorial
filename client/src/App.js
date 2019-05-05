@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import { Home, NavBar, About, Contact, Login, Profile, Register, Error, AuthRoute } from "./components";
+import { Home, About, Contact, Login, Profile, Register, Error } from "./pages";
+import { NavBar, AuthRoute } from "./components";
 
 const App = _ => (
   <Router>

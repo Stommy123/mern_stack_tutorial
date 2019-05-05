@@ -1,6 +1,6 @@
 import React, { useReducer, useEffect } from "react";
 import axios from "axios";
-import { SectionWrapper } from "..";
+import { SectionWrapper } from "../../components";
 const AVATAR = require("../../assets/images/avatar.png");
 
 const Profile = _ => {
@@ -19,14 +19,12 @@ const Profile = _ => {
     fetchProfile();
   }, []);
   return (
-    <SectionWrapper>
-      <div className="col-md-8 col-md-offset-2">
-        <h1 className="display-4">
-          <img className="avatar img-circle hidden-xs-down" src={AVATAR} alt="avatar" />
-          {name}
-        </h1>
-        <h2 className="favorite-book">Favorite Book: {favoriteBook}</h2>
-      </div>
+    <SectionWrapper columnDefs="col-md-8 col-md-offset-2">
+      <h1 className="display-4">
+        <img className="avatar img-circle hidden-xs-down" src={AVATAR} alt="avatar" />
+        {name}
+      </h1>
+      <h2 className="favorite-book">Favorite Book: {favoriteBook}</h2>
     </SectionWrapper>
   );
 };

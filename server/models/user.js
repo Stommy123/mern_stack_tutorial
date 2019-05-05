@@ -27,9 +27,7 @@ const UserSchema = new mongoose.Schema({
 UserSchema.statics.authenticate = (email, password, callback) => {
   User.findOne({ email }).exec((error, user) => {
     if (error || !user) return callback({ error: true });
-    bcrypt.compare(password, user.password, (_, res) =>
-      res ? callback({ error: false, user }) : callback({ error: true })
-    );
+    bcrypt.compare(password, user.password, (_, res) => callback({ error: !res, user }));
   });
 };
 UserSchema.pre("save", function(next) {

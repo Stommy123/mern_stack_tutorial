@@ -2,7 +2,7 @@ import React from "react";
 import { Portal } from "react-portal";
 
 const Modal = ({ isOpen, content, toggleModal }) =>
-  isOpen ? (
+  isOpen && (
     <Portal>
       <aside className="c-modal-cover fadeIn">
         <div className="c-modal slideIn">
@@ -18,6 +18,6 @@ const Modal = ({ isOpen, content, toggleModal }) =>
         </div>
       </aside>
     </Portal>
-  ) : null;
+  );
 
 export default Modal;
