@@ -27,9 +27,4 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use("/", routes);
 
-app.get("/hello", (_, res) => {
-  console.log("yooo");
-  res.send("hello world");
-});
-
 app.listen(5000, _ => console.log("Express App listening on port 5000"));

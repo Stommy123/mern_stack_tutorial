@@ -10,3 +10,4 @@ export { default as Error } from "./Error";
 export { default as SectionWrapper } from "./SectionWrapper";
 export { default as AuthRoute } from "./AuthRoute";
 export { default as AccessButton } from "./AccessButton";
+export { default as Modal } from "./Modal";

@@ -11,7 +11,7 @@ const Contact = _ => (
         vestibulum nibh, accumsan sagittis turpis nisl eu mauris. Mauris ut laoreet sapien. Nam suscipit, dui at
         condimentum accumsan, dui sapien tincidunt.
       </p>
-      <NavLink className="btn btn-primary" href="#" to="#">
+      <NavLink className="btn btn-primary pull-md" href="#" to="#">
         Get In Touch
       </NavLink>
     </div>

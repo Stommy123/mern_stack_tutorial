@@ -1,22 +1,23 @@
 import React, { useReducer } from "react";
 import axios from "axios";
 import { withRouter } from "react-router-dom";
-import { SectionWrapper, FormGroup } from "..";
+import { SectionWrapper, FormGroup, Modal } from "..";
 import { headers } from "../../assets/config";
 
 const Login = props => {
-  const initialState = { email: String(), password: String() };
+  const initialState = { email: String(), password: String(), isOpen: false, modalContent: String() };
   const loginReducer = (state, payload) => ({ ...state, ...payload });
   const [state, setState] = useReducer(loginReducer, initialState);
-  const { email, password } = state;
+  const { email, password, isOpen, modalContent } = state;
   const handleInputChange = field => e => setState({ [field]: e.target.value });
   const handleLogin = async e => {
     e.preventDefault();
-    const { data: { error, session } = {} } = await axios.post("/login", state, { headers });
-    if (error) return;
+    const { data: { error, session, message } = {} } = await axios.post("/login", state, { headers });
+    if (error) return setState({ isOpen: true, modalContent: message });
     sessionStorage.setItem("sessionToken", session.userId);
     props.history.push("/profile");
   };
+  const toggleModal = _ => setState({ isOpen: !isOpen });
   return (
     <SectionWrapper>
       <div className="col-md-6 col-md-offset-3">
@@ -43,6 +44,7 @@ const Login = props => {
           </button>
         </form>
       </div>
+      <Modal isOpen={isOpen} content={modalContent} toggleModal={toggleModal} />
     </SectionWrapper>
   );
 };

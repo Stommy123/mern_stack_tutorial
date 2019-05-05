@@ -20,7 +20,7 @@ router.post("/login", (req, res) => {
   const { body: { email, password } = {} } = req;
   if (email && password) {
     User.authenticate(email, password, ({ error, user }) => {
-      if (error || !user) res.send({ message: "Wrong email or password", status: 401, error: true });
+      if (error || !user) return res.send({ message: "Wrong email or password", status: 401, error: true });
       req.session.userId = user._id;
       return res.send({ session: req.session, error: false });
     });

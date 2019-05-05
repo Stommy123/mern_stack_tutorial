@@ -1,7 +1,7 @@
 import React, { useReducer } from "react";
 import axios from "axios";
 import { withRouter } from "react-router-dom";
-import { FormGroup } from "..";
+import { FormGroup, Modal } from "..";
 import { headers } from "../../assets/config";
 
 const Register = props => {
@@ -10,20 +10,23 @@ const Register = props => {
     email: String(),
     favoriteBook: String(),
     password: String(),
-    confirmPassword: String()
+    confirmPassword: String(),
+    isOpen: false,
+    modalContent: false
   };
   const registerReducer = (state, payload) => ({ ...state, ...payload });
   const [state, setState] = useReducer(registerReducer, initialState);
-  const { name, email, favoriteBook, password, confirmPassword } = state;
+  const { name, email, favoriteBook, password, confirmPassword, isOpen, modalContent } = state;
   const handleInputChange = field => e => setState({ [field]: e.target.value });
   const handleRegister = async e => {
     e.preventDefault();
     const {
-      data: { error }
+      data: { error, message }
     } = await axios.post("/register", state, { headers });
-    if (error) return;
+    if (error) return setState({ isOpen: true, modalContent: message });
     props.history.push("/login");
   };
+  const toggleModal = _ => setState({ isOpen: !isOpen });
   return (
     <div className="main container row">
       <div className="col-md-6 col-md-offset-3">
@@ -77,6 +80,7 @@ const Register = props => {
           </button>
         </form>
       </div>
+      <Modal isOpen={isOpen} content={modalContent} toggleModal={toggleModal} />
     </div>
   );
 };
