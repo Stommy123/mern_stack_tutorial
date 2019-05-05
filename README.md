@@ -1,6 +1,6 @@
 # Mongo Express React Node - BookWorm Clone
 
-- Mongo
+- MongoDB
 - Mongoose
 - Express
 - Express Sessions
@@ -11,3 +11,6 @@
 - Hooks
 - Axios
 - React Portals
+- Classnames
+
+## CRUD / Context - To Be Added
