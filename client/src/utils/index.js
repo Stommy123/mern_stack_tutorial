@@ -1,1 +1,1 @@
-export const isLoggedIn = _ => !!sessionStorage.getItem("sessionToken");
+export const isLoggedIn = _ => !!sessionStorage.getItem('sessionToken');

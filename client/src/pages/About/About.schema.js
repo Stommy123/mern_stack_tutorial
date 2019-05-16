@@ -1,5 +1,5 @@
 export const schema = {
-  headingText: "About Us",
+  headingText: 'About Us',
   items: [
     {
       content:
@@ -7,8 +7,8 @@ export const schema = {
     },
     {
       content:
-        "Sed dictum dolor vitae dignissim scelerisque. Ut tincidunt, tortor at accumsan eleifend, tellus lectus vestibulum nibh, accumsan sagittis turpis nisl eu mauris.Mauris ut laoreet sapien.Nam suscipit, dui at condimentum accumsan, dui sapien tincidunt."
+        'Sed dictum dolor vitae dignissim scelerisque. Ut tincidunt, tortor at accumsan eleifend, tellus lectus vestibulum nibh, accumsan sagittis turpis nisl eu mauris.Mauris ut laoreet sapien.Nam suscipit, dui at condimentum accumsan, dui sapien tincidunt.'
     }
   ],
-  buttons: [{ path: "/register", text: "Get Started for FREE" }]
+  buttons: [{ path: '/register', text: 'Get Started for FREE' }]
 };

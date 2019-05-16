@@ -1,8 +1,9 @@
-import React, { useReducer } from "react";
-import { FormGroup } from "..";
+import React, { useReducer } from 'react';
+import { FormGroup } from '..';
 
-const Form = ({ schema: { id, fields = [], formHeading, submitText } = {}, handleSubmit }) => {
-  const initialState = fields.reduce((acc, field) => {
+const Form = ({ isUpdate, updateSchema, schema: { id, fields = [], formHeading, submitText } = {}, handleSubmit }) => {
+  const schema = isUpdate ? updateSchema : fields;
+  const initialState = schema.reduce((acc, field) => {
     acc[field.id] = String();
     return acc;
   }, {});
@@ -25,6 +26,7 @@ const Form = ({ schema: { id, fields = [], formHeading, submitText } = {}, handl
           placeholder={placeholder}
           required={required}
           onChange={handleInputChange}
+          value={state[id]}
         />
       ))}
       <button className="btn btn-primary" type="submit">

@@ -1,9 +1,9 @@
-import React, { useReducer } from "react";
-import axios from "axios";
-import { withRouter } from "react-router-dom";
-import { SectionWrapper, Form, Modal } from "../../components";
-import { headers } from "../../assets/config";
-import { schema } from "./Login.schema";
+import React, { useReducer } from 'react';
+import axios from 'axios';
+import { withRouter } from 'react-router-dom';
+import { SectionWrapper, Form, Modal } from '../../components';
+import { headers } from '../../assets/config';
+import { schema } from './Login.schema';
 
 const Login = props => {
   const initialState = { isOpen: false, modalContent: String() };
@@ -11,10 +11,10 @@ const Login = props => {
   const [state, setState] = useReducer(loginReducer, initialState);
   const { isOpen, modalContent } = state;
   const handleLogin = async formData => {
-    const { data: { error, session, message } = {} } = await axios.post("/login", formData, { headers });
+    const { data: { error, session, message } = {} } = await axios.post('/login', formData, { headers });
     if (error) return setState({ isOpen: true, modalContent: message });
-    sessionStorage.setItem("sessionToken", session.userId);
-    props.history.push("/profile");
+    sessionStorage.setItem('sessionToken', session.userId);
+    props.history.push('/profile');
   };
   const toggleModal = _ => setState({ isOpen: !isOpen });
   return (

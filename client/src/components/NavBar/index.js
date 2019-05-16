@@ -1,7 +1,7 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import { AccessButton } from "..";
-import { isLoggedIn } from "../../utils";
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import { AccessButton } from '..';
+import { isLoggedIn } from '../../utils';
 
 const NavBar = _ => (
   <nav className="navbar navbar-fixed-top navbar-dark bg-inverse">

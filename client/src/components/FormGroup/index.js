@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const FormGroup = ({ type, label, placeholder, id, value, onChange, required }) => (
   <div className="form-group">

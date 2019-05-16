@@ -1,5 +1,5 @@
-import React from "react";
-import { SectionWrapper } from "../../components";
+import React from 'react';
+import { SectionWrapper } from '../../components';
 
 const Error = _ => (
   <SectionWrapper columnDefs="col-md-6 col-md-offset-3 p-t-2" rowDefs="text-xs-center">
