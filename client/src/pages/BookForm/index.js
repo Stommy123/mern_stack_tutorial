@@ -38,7 +38,7 @@ const BookForm = ({ history, match: { params: { id } = {} } = {} }) => {
   }, []);
   const updateSchema = book && Object.keys(book);
   return (
-    <SectionWrapper columnDefs="col-md-6 col-md-offset-3">
+    <SectionWrapper columnDefs="col-md-8 col-md-offset-2">
       <Form schema={schema} handleSubmit={handleSubmit} isUpdate={isUpdate} updateSchema={updateSchema} />
       <Modal isOpen={isOpen} content={modalContent} toggleModal={toggleModal} />
     </SectionWrapper>

@@ -44,3 +44,5 @@ router.get('/delete/:id', (req, res) => {
     res.send({ status: 200, path: '/' }); //CHANGE PATH LATER
   });
 });
+
+module.exports = router;

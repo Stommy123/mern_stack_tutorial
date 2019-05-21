@@ -1,9 +1,9 @@
-import React, { useReducer } from "react";
-import axios from "axios";
-import { withRouter } from "react-router-dom";
-import { Form, Modal, SectionWrapper } from "../../components";
-import { headers } from "../../assets/config";
-import { schema } from "./Register.schema";
+import React, { useReducer } from 'react';
+import axios from 'axios';
+import { withRouter } from 'react-router-dom';
+import { Form, Modal, SectionWrapper } from '../../components';
+import { headers } from '../../assets/config';
+import { schema } from './Register.schema';
 
 const Register = props => {
   const initialState = {
@@ -16,9 +16,9 @@ const Register = props => {
   const handleRegister = async formData => {
     const {
       data: { error, message }
-    } = await axios.post("/register", formData, { headers });
+    } = await axios.post('/register', formData, { headers });
     if (error) return setState({ isOpen: true, modalContent: message });
-    props.history.push("/login");
+    props.history.push('/login');
   };
   const toggleModal = _ => setState({ isOpen: !isOpen });
   return (

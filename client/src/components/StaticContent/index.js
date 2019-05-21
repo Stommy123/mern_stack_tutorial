@@ -8,7 +8,7 @@ const StaticContent = ({ schema: { headingText, items = [], buttons = [] } = {} 
       <p>{content}</p>
     ))}
     {buttons.map(({ text, path }) => (
-      <NavLink className="btn btn-info-outline btn-lg m-t-1" to={path}>
+      <NavLink key={path} className="btn btn-info-outline btn-lg m-t-1" to={path}>
         {text}
       </NavLink>
     ))}

@@ -12,10 +12,19 @@ const NavBar = _ => (
           Bookworm
         </NavLink>
         <div className="nav-items clearfix">
-          {!isLoggedIn() && (
+          {!isLoggedIn() ? (
             <NavLink className="nav-item nav-link" to="/register">
               Sign Up
             </NavLink>
+          ) : (
+            <>
+              <NavLink className="nav-item nav-link" to="/books">
+                My Books
+              </NavLink>
+              <NavLink className="nav-item nav-link" to="/create-book">
+                Add Book
+              </NavLink>
+            </>
           )}
           <NavLink className="nav-item nav-link" to="/about">
             About
