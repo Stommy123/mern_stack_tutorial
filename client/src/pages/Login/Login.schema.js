@@ -7,13 +7,15 @@ export const schema = {
       label: "Email",
       type: "text",
       id: "email",
-      placeholder: "email"
+      placeholder: "email",
+      widget: 'input',
     },
     {
       label: "Password",
       type: "password",
       id: "password",
-      placeholder: "password"
+      placeholder: "password",
+      widget: 'input',
     }
   ]
 };

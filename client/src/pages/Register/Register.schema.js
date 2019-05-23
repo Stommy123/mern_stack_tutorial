@@ -8,33 +8,38 @@ export const schema = {
       type: 'text',
       id: 'name',
       placeholder: 'name',
-      required: true
+      required: true,
+      widget: 'input',
     },
     {
       label: 'Email',
       type: 'email',
       id: 'email',
       placeholder: 'name@email.com',
-      required: true
+      required: true,
+      widget: 'input',
     },
     {
       label: 'Favorite Book',
       type: 'text',
       id: 'favoriteBook',
       placeholder: 'title of book',
-      required: true
+      required: true,
+      widget: 'input',
     },
     {
       label: 'Password',
       type: 'password',
       id: 'password',
-      required: true
+      required: true,
+      widget: 'input',
     },
     {
       label: 'Confirm Password',
       type: 'password',
       id: 'confirmPassword',
-      required: true
+      required: true,
+      widget: 'input',
     }
   ]
 };

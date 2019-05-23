@@ -9,7 +9,7 @@ const Form = ({ isUpdate, updateSchema, schema: { id, fields = [], formHeading, 
   }, {});
   const formReducer = (state, payload) => ({ ...state, ...payload });
   const [state, setState] = useReducer(formReducer, initialState);
-  const handleInputChange = field => e => setState({ [field]: e.target.value });
+  const handleInputChange = ({ id, value }) => setState({ [id]: value });
   const onSubmit = e => {
     e.preventDefault();
     handleSubmit(state);
@@ -17,8 +17,11 @@ const Form = ({ isUpdate, updateSchema, schema: { id, fields = [], formHeading, 
   return (
     <form onSubmit={onSubmit} id={id}>
       <h1 className="display-4 m-b-2">{formHeading}</h1>
-      {fields.map(({ label, type, id, placeholder, required }) => (
+      {fields.map(({ label, type, id, placeholder, required, group = [], widget, defaultValue }) => (
         <FormGroup
+          defaultValue={defaultValue}
+          widget={widget}
+          group={group}
           key={id}
           label={label}
           type={type}

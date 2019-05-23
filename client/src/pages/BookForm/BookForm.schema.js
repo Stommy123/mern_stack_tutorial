@@ -8,14 +8,16 @@ export const schema = {
       label: 'Title',
       type: 'text',
       placeholder: 'book',
-      required: true
+      required: true,
+      widget: 'input',
     },
     {
       id: 'author',
       label: 'Author',
       type: 'text',
       placeholder: 'author',
-      required: true
+      required: true,
+      widget: 'input',
     }
   ]
 };
