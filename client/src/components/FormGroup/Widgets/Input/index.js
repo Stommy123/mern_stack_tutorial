@@ -1,22 +1,34 @@
-import React from 'react';
-import classNames from 'classnames';
+import React from "react";
+import classNames from "classnames";
 
-const Input = ({ type, label, placeholder, id, value, onChange, required, classes = [], defaultValue, defaultChecked, isChecked }) => (
+const Input = ({
+  type,
+  label,
+  placeholder,
+  id,
+  value,
+  onChange,
+  required,
+  classes = [],
+  defaultValue,
+  defaultChecked,
+  isChecked
+}) => (
   <>
     <label>{label}</label>
     <input
       id={id}
-      className={classNames('form-control', ...classes)}
+      className={classNames("form-control", ...classes)}
       required={required}
       type={type}
-      checked={type === ('radio' || 'checkbox') && isChecked}
-      defaultChecked={type === ('radio' || 'checkbox') && defaultChecked}
+      checked={isChecked}
+      defaultChecked={defaultChecked}
       placeholder={placeholder}
-      value={value}
+      value={type !== "file" ? value : String()}
       onChange={e => onChange({ id, value: e.target.value })}
       defaultValue={defaultValue}
     />
   </>
-)
+);
 
 export default Input;

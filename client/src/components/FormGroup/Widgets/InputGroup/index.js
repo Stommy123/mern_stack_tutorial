@@ -1,38 +1,39 @@
-import React, { useReducer } from 'react';
-import Input from '../..';
+import React, { useReducer } from "react";
+import { Input } from "..";
 
-const InputGroup = ({ type, label, onChange, classes = [], defaultValue, group = [], multiSelect }) => {
-  const initialState = { selected: defaultValue, selections: [] }
+const InputGroup = ({ id, type, label, onChange, classes = [], defaultValue, group = [], multiSelect }) => {
+  const initialState = { selected: defaultValue, selections: [] };
   const radioGroupReducer = (state, payload) => ({ ...state, ...payload });
   const [state, setState] = useReducer(radioGroupReducer, initialState);
   const { selected, selections } = state;
-  const handleSelect = ({ id, value }) =>  {
+  const handleSelect = ({ id: inputId, value }) => {
     let newSelection = selections;
     if (multiSelect) {
-      const alreadySelected = selections.includes(id);
-      if (alreadySelected) newSelection = selections.filter(el => el !== id)
-      else newSelection.push(id)
+      const alreadySelected = selections.includes(inputId);
+      if (alreadySelected) newSelection = selections.filter(el => el !== inputId);
+      else newSelection.push(inputId);
     }
-    setState({ ...state, selected: id, ...(multiSelect && {  selections: newSelection }) })
-    onChange && onChange({ id, value: multiSelect ? newSelection : value })
-  }
+    setState({ ...state, selected: inputId, ...(multiSelect && { selections: newSelection }) });
+    onChange && onChange({ id, value: multiSelect ? newSelection : value });
+  };
   return (
     <div>
       <label>{label}</label>
-      {group.map(({ display, value, id, defaultChecked }) => (
+      {group.map(({ id: inputId, display, value }) => (
         <Input
           label={display}
           value={value}
-          id={id}
-          defaultChecked={multiSelect ?  selections.includes(id) : defaultChecked}
+          id={inputId}
           onChange={handleSelect}
-          isChecked={multiSelect ? selections.includes(id) : selected === id}
+          isChecked={multiSelect ? selections.includes(inputId) : selected === inputId}
           type={type}
           classes={classes}
+          selected={selected}
+          type={type}
         />
       ))}
     </div>
-  )
-}
+  );
+};
 
 export default InputGroup;
