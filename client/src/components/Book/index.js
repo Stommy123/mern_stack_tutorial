@@ -1,14 +1,13 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React from "react";
 
-const Book = ({ _id, title, author }) => (
-  <div className="book">
-    <NavLink to={`/books/${_id}`}>
-      <p>Title: {title}</p>
-      <p>Author: {author} </p>
-    </NavLink>
-    <NavLink to={`/books/update/${_id}`}>Edit Book</NavLink>
-  </div>
+const Book = ({ _id, title, author, rowId }) => (
+  <tr>
+    <th className="text-info" scope="row">
+      {rowId}
+    </th>
+    <td className="text-info">{title}</td>
+    <td className="text-info">{author}</td>
+  </tr>
 );
 
 export default Book;

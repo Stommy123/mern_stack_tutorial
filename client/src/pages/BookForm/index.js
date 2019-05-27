@@ -1,46 +1,32 @@
 /* eslint-disable */
-import React, { useReducer, useEffect } from 'react';
-import axios from 'axios';
-import { withRouter } from 'react-router-dom';
-import { Form, SectionWrapper, Modal } from '../../components';
-import { headers } from '../../assets/config';
-import { schema } from './BookForm.schema';
+import React, { useContext } from "react";
+import axios from "axios";
+import { withRouter } from "react-router-dom";
+import { Form, SectionWrapper, Modal } from "../../components";
+import { headers } from "../../assets/config";
+import { schema } from "./BookForm.schema";
+import { GlobalContext } from "../../context";
 
-const BookForm = ({ history, match: { params: { id } = {} } = {} }) => {
-  const initialState = {
-    isOpen: false,
-    modalContent: false,
-    isUpdate: false,
-    book: {}
-  };
-  const registerReducer = (state, payload) => ({ ...state, ...payload });
-  const [state, setState] = useReducer(registerReducer, initialState);
-  const { isOpen, modalContent, isUpdate, book } = state;
+const BookForm = ({ history }) => {
+  const {
+    dispatch: {
+      modal: { setOpenModal, closeModal, setModalContent }
+    }
+  } = useContext(GlobalContext);
   const handleSubmit = async formData => {
-    const path = isUpdate ? `/update/${book._id}` : '/create';
     const {
       data: { error, message }
-    } = await axios.post(`/books/${path}`, formData, { headers });
-    if (error) return setState({ isOpen: true, modalContent: message });
-    history.push('/books');
+    } = await axios.post(`/books/create`, formData, { headers });
+    if (error) {
+      setModalContent({ modalContent: message });
+      return setOpenModal({ modalId: "bookModal" });
+    }
+    history.push("/books");
   };
-  const fetchBook = async _ => {
-    if (!id) return;
-    const {
-      data: { book, error }
-    } = await axios.get(`/books/${id}`);
-    if (error) return;
-    setState({ isUpdate: true, book });
-  };
-  const toggleModal = _ => setState({ isOpen: !isOpen });
-  useEffect(_ => {
-    fetchBook();
-  }, []);
-  const updateSchema = book && Object.keys(book);
   return (
     <SectionWrapper columnDefs="col-md-8 col-md-offset-2">
-      <Form schema={schema} handleSubmit={handleSubmit} isUpdate={isUpdate} updateSchema={updateSchema} />
-      <Modal isOpen={isOpen} content={modalContent} toggleModal={toggleModal} />
+      <Form schema={schema} handleSubmit={handleSubmit} />
+      <Modal id="bookModal" actions={[{ label: "Okay", onClick: closeModal }]} />
     </SectionWrapper>
   );
 };

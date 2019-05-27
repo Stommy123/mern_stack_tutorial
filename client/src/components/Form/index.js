@@ -1,17 +1,14 @@
 import React, { useReducer } from "react";
 import { FormGroup } from "..";
 
-const Form = ({ isUpdate, updateSchema, schema: { id, fields = [], formHeading, submitText } = {}, handleSubmit }) => {
-  const schema = isUpdate ? updateSchema : fields;
-  const initialState = schema.reduce((acc, field) => {
+const Form = ({ schema: { id, fields = [], formHeading, submitText } = {}, handleSubmit }) => {
+  const initialState = fields.reduce((acc, field) => {
     acc[field.id] = String();
     return acc;
   }, {});
   const formReducer = (state, payload) => ({ ...state, ...payload });
   const [state, setState] = useReducer(formReducer, initialState);
-  const handleInputChange = ({ id, value }) => {
-    setState({ [id]: value });
-  };
+  const handleInputChange = ({ id, value }) => setState({ [id]: value });
   const onSubmit = e => {
     e.preventDefault();
     handleSubmit(state);

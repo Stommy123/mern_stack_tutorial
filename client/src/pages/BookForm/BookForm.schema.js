@@ -4,10 +4,10 @@ export const schema = {
   submitText: "Create Book",
   fields: [
     {
-      id: "book",
+      id: "title",
       label: "Title",
       type: "text",
-      placeholder: "book",
+      placeholder: "title",
       required: true,
       widget: "input"
     },
