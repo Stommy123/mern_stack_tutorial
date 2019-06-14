@@ -1,11 +1,8 @@
-import models from "./models";
+import models from './models';
 
 export const initialState = Object.keys(models).reduce(
-  (acc, model) => ({
-    ...acc,
-    [model]: models[model].initialState
-  }),
-  Object()
+  (acc, model) => ({ ...acc, [model]: models[model].initialState }),
+  {}
 );
 
 export const rootReducer = (state, { type: { model, action }, payload }) => ({
@@ -21,9 +18,5 @@ export const rematchify = dispatch =>
         (acc, action) => ({
           ...acc,
           [action]: payload => dispatch({ type: { model, action }, payload })
-        }),
-        Object()
-      )
-    }),
-    Object()
-  );
+        }), {})
+    }), {});
