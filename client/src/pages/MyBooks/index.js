@@ -6,7 +6,6 @@ const MyBooks = _ => {
   const initialState = { books: [] };
   const myBooksReducer = (state, payload) => ({ ...state, ...payload });
   const [state, setState] = useReducer(myBooksReducer, initialState);
-  const { books } = state;
   const fetchBooks = async _ => {
     const {
       data: { books, error }
@@ -30,7 +29,7 @@ const MyBooks = _ => {
           </tr>
         </thead>
         <tbody>
-          {books.map((book, i) => (
+          {state.books.map((book, i) => (
             <Book key={book._id} rowId={i + 1} {...book} />
           ))}
         </tbody>

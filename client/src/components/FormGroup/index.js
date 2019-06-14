@@ -1,10 +1,12 @@
 import React from "react";
-import { Input, InputDropdown, InputGroup } from "./Widgets";
+import { Input, InputDropdown, InputGroup, FileInput, TextArea } from "./Widgets";
 const FormGroup = props => {
   const Component = {
     input: Input,
     dropdown: InputDropdown,
-    group: InputGroup
+    group: InputGroup,
+    file: FileInput,
+    text: TextArea,
   }[props.widget];
   return (
     <div className="form-group">

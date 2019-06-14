@@ -1,7 +1,7 @@
 import React from "react";
 
 const Book = ({ _id, title, author, rowId }) => (
-  <tr>
+  <tr data={_id}>
     <th className="text-info" scope="row">
       {rowId}
     </th>

@@ -9,6 +9,7 @@ const Form = ({ schema: { id, fields = [], formHeading, submitText } = {}, handl
   const formReducer = (state, payload) => ({ ...state, ...payload });
   const [state, setState] = useReducer(formReducer, initialState);
   const handleInputChange = ({ id, value }) => setState({ [id]: value });
+  const handleUpload = _ => console.log('backend image storage still in progress!')
   const onSubmit = e => {
     e.preventDefault();
     handleSubmit(state);
@@ -17,7 +18,7 @@ const Form = ({ schema: { id, fields = [], formHeading, submitText } = {}, handl
     <form onSubmit={onSubmit} id={id}>
       <h1 className="display-4 m-b-2">{formHeading}</h1>
       {fields.map(field => (
-        <FormGroup {...field} onChange={handleInputChange} value={state[field.id]} />
+        <FormGroup {...field} onUpload={handleUpload} onChange={handleInputChange} value={state[field.id]} />
       ))}
       <button className="btn btn-primary" type="submit">
         {submitText}

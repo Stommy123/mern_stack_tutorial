@@ -29,7 +29,6 @@ const InputGroup = ({ id, type, label, onChange, classes = [], defaultValue, gro
           type={type}
           classes={classes}
           selected={selected}
-          type={type}
         />
       ))}
     </div>
