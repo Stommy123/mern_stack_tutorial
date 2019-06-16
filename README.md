@@ -12,5 +12,4 @@
 - Axios
 - React Portals
 - Classnames
-
-## CRUD / Context - To Be Added
+- Context
