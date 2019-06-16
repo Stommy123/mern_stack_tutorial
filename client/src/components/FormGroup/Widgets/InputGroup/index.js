@@ -13,7 +13,7 @@ const InputGroup = ({ id, type, label, onChange, classes = [], defaultValue, gro
       if (alreadySelected) newSelection = selections.filter(el => el !== inputId);
       else newSelection.push(inputId);
     }
-    setState({ ...state, selected: inputId, ...(multiSelect && { selections: newSelection }) });
+    setState({ selected: inputId, ...(multiSelect && { selections: newSelection }) });
     onChange && onChange({ id, value: multiSelect ? newSelection : value });
   };
   return (

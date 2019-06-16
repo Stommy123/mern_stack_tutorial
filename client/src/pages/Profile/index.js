@@ -15,7 +15,7 @@ const Profile = _ => {
     if (error) return;
     setState({ name, favoriteBook });
   };
-  const mountEffect = useCallback(fetchProfile, [])''
+  const mountEffect = useCallback(fetchProfile, []);
   useEffect(_ => {
     mountEffect();
   }, [mountEffect]);
