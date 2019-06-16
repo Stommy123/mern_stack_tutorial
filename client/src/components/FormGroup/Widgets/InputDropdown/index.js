@@ -15,7 +15,6 @@ const InputDropdown = ({
 }) => (
   <>
     <label>{label}</label>
-    {console.log("options", options)}
     <select
       id={id}
       defaultValue={defaultValue}

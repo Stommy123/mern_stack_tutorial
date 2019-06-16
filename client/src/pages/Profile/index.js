@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect } from 'react';
+import React, { useReducer, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { SectionWrapper } from '../../components';
 const AVATAR = require('../../assets/images/avatar.png');
@@ -15,9 +15,10 @@ const Profile = _ => {
     if (error) return;
     setState({ name, favoriteBook });
   };
+  const mountEffect = useCallback(fetchProfile, [])''
   useEffect(_ => {
-    fetchProfile();
-  }, []);
+    mountEffect();
+  }, [mountEffect]);
   return (
     <SectionWrapper columnDefs="col-md-8 col-md-offset-2">
       <h1 className="display-4">

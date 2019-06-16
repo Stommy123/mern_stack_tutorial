@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect } from "react";
+import React, { useReducer, useEffect, useCallback } from "react";
 import axios from "axios";
 import { SectionWrapper, Book } from "../../components";
 
@@ -13,9 +13,10 @@ const MyBooks = _ => {
     if (error) return;
     setState({ books });
   };
+  const mountEffect = useCallback(fetchBooks, []);
   useEffect(_ => {
-    fetchBooks();
-  }, []);
+    mountEffect();
+  }, [mountEffect]);
   return (
     <SectionWrapper columnDefs="col-md-8 col-md-offset-2">
       <h1 className="text text-center">My Books</h1>
