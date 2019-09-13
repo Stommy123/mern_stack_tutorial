@@ -12,8 +12,7 @@ const Profile = _ => {
     const {
       data: { name, favoriteBook, error }
     } = await axios.get('/user');
-    if (error) return;
-    setState({ name, favoriteBook });
+    !error && setState({ name, favoriteBook });
   };
   const mountEffect = useCallback(fetchProfile, []);
   useEffect(_ => {

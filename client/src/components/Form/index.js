@@ -3,7 +3,7 @@ import { FormGroup } from "..";
 
 const Form = ({ schema: { id, fields = [], formHeading, submitText } = {}, handleSubmit }) => {
   const initialState = fields.reduce((acc, field) => {
-    acc[field.id] = String();
+    acc[field.id] = field.multiSelect ? [] : String();
     return acc;
   }, {});
   const formReducer = (state, payload) => ({ ...state, ...payload });

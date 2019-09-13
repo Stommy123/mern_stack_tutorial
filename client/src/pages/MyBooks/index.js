@@ -7,11 +7,8 @@ const MyBooks = _ => {
   const myBooksReducer = (state, payload) => ({ ...state, ...payload });
   const [state, setState] = useReducer(myBooksReducer, initialState);
   const fetchBooks = async _ => {
-    const {
-      data: { books, error }
-    } = await axios.get("/books");
-    if (error) return;
-    setState({ books });
+    const { data: { books, error } } = await axios.get("/books");
+    !error && setState({ books });
   };
   const mountEffect = useCallback(fetchBooks, []);
   useEffect(_ => {
